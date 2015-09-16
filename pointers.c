@@ -1,12 +1,31 @@
-
+/*
+Assignment code written by Fredrik Hyyrynen
+*/
 
 
 #include <stdio.h>
 
 char* text1 = "This is a string.";
 char* text2 = "Yet another thing.";
+int list1[80/sizeof(char)];
+int list2[80/sizeof(char)]; 
+int count = 0;
 
+void copycodes(const char* t, int* l, int* c){
+	while(1){
+		*(l) = (int)*(t);
+		if(*t == 0x00)
+			break;
+		t+=1;
+		l+=1;
+		*c = 1 + *c;
+	}
+}
 
+void work(){
+	copycodes((char *) text1, list1,(int *) &count);
+	copycodes((char *) text2, list2,(int *) &count);
+}
 
 void printlist(const int* lst){
   printf("ASCII codes and corresponding characters.\n");
@@ -24,8 +43,7 @@ void endian_proof(const char* c){
 }
 
 int main(void){
-  work();
-
+work();
   printf("\nlist1: ");
   printlist(list1);
   printf("\nlist2: ");
