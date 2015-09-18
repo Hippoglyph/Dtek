@@ -3,6 +3,8 @@
  By David Broman.
  Last modified: 2015-09-15
  This file is in the public domain.
+
+THIS CODE IS WRITTEN BY JONATHAN RINNARV VII
 */
 
 
@@ -11,24 +13,25 @@
 
 #define COLUMNS 6
 
+int currentColum = 0;
+
+void print_numbers(int n){
+	printf("%10d ", n);
+	currentColum++;
+	if(currentColum >= COLUMNS){
+		printf("\n");
+		currentColum = 0;	
+	}
+}
+
 
 void print_primes(int n){
-  // Should print out all prime numbers less than 'n'
-  // with the following formatting. Note that
-  // the number of columns is stated in the define
-  // COLUMNS
-
-  printf("%10d ", 2);
-  printf("%10d ", 3);
-  printf("%10d ", 5);
-  printf("%10d ", 7);
-  printf("%10d ", 11);
-  printf("%10d ", 13);
-  printf("\n");
-  printf("%10d ", 17);
-  printf("%10d ", 19);
-
-  printf("\n");
+	int i = 2;
+	for(i; i<=n;i++){
+		if(is_prime(i))
+			print_numbers(i);
+	}
+	printf("\n");
 }
 
 // 'argc' contains the number of program arguments, and
@@ -39,6 +42,20 @@ int main(int argc, char *argv[]){
     print_primes(atoi(argv[1]));
   else
     printf("Please state an interger number.\n");
+  return 0;
+}
+
+int is_prime(int n){
+  if(n <= 1)
+	  return 0;
+  if(n == 2)
+	return 1;
+  int loop = 2;
+  while (n % loop != 0){
+	  if(loop*loop > n)
+		  return 1;
+	  loop++;
+  }
   return 0;
 }
 
