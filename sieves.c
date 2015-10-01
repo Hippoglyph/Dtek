@@ -20,7 +20,7 @@ void print_numbers(int n){
 
 void print_sieves(int n){
 	int start = 2;
-	int marked[n-start];
+	char marked[n-start];
 	int j = 0;
 	for(j;j<(n-start);j++){
 		marked[j] = 0;

@@ -7,8 +7,8 @@ Assignment code written by Fredrik Hyyrynen
 
 char* text1 = "This is a string.";
 char* text2 = "Yet another thing.";
-int list1[80/sizeof(char)];
-int list2[80/sizeof(char)]; 
+int list1[80/sizeof(int)];
+int list2[80/sizeof(int)]; 
 int count = 0;
 
 void copycodes(const char* t, int* l, int* c){
@@ -23,8 +23,8 @@ void copycodes(const char* t, int* l, int* c){
 }
 
 void work(){
-	copycodes((char *) text1, list1,(int *) &count);
-	copycodes((char *) text2, list2,(int *) &count);
+	copycodes((char *) text1, list1,&count);
+	copycodes((char *) text2, list2,&count);
 }
 
 void printlist(const int* lst){

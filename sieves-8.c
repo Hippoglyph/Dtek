@@ -20,24 +20,27 @@ void print_numbers(int n){
 
 void print_sieves(int n){
 	int start = 2;
-	char *marked = malloc((n-start)*sizeof(char));
+	char marked[n-start];
 	int j = 0;
 	for(j;j<(n-start);j++){
 		marked[j] = 0;
 	}
+	int oldPrime = start;
+	int distCount = 0;
 	int i = start;
 	for(i;i <= n;i++ ){
 		if(marked[i-start] == 1)
 			continue;
-		else
-			print_numbers(i);
-		int j = 1;
+		if(i - oldPrime == 8)
+			distCount++;
+		oldPrime = i;
+		int j = 2;
 		while(i*j <= n){
 			marked[i*j-start] = 1;
 			j++;
 		}
 	}
-	free(marked);
+	printf("%2d", distCount);
 	printf("\n");
 }
 
