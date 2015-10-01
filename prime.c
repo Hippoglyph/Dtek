@@ -14,11 +14,11 @@ int is_prime(int n){
   if(n <= 1)
 	  return 0;
   int loop = 2;
-  do{
+  while (n % loop != 0){
 	  if(loop*loop > n)
 		  return 1;
 	  loop++;
-  }while (n % loop != 0);
+  };
   return 0;
 }
 
